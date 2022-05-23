@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<decorators defaultdir="/decorators">
+    <excludes>
+        <pattern>/login</pattern>
+        <pattern>/assets</pattern>
+    </excludes>
+    <decorator name="frontend" page="frontend.jsp">
+        <pattern>/*</pattern>
+    </decorator>
+    <decorator name="backend" page="backend.jsp">
+        <pattern>/backend*</pattern>
+    </decorator>
+</decorators>

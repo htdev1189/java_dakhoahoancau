@@ -1,5 +1,10 @@
+<%@ page import="htdev.dao.CategoryDao" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%--goi class--%>
+<%
+    CategoryDao qly_category = new CategoryDao();
+%>
 <html>
 <head>
     <meta charset="utf-8">
@@ -29,10 +34,11 @@
         <div class="container-fluid">
             <div class="row mb-2 justify-content-between">
                 <div class="col-sm-6">
-                    <h1>DataTables</h1>
+                    <h1>Danh mục bệnh</h1>
                 </div>
                 <div class="col-sm-1">
-                    <a href="${pageContext.request.contextPath}/backend/cat?action=add" class="btn btn-primary btn-block">Add</a>
+                    <a href="${pageContext.request.contextPath}/backend/cat?action=add"
+                       class="btn btn-primary btn-block">Add</a>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -62,10 +68,20 @@
                                         <td>${c.id}</td>
                                         <td>${c.name}</td>
                                         <td>${c.slug}</td>
-                                        <td>${c.parent}</td>
                                         <td>
-                                            <a href=""><i class="far fa-trash-alt"></i></a>
-                                            <a href=""><i class="far fa-edit"></i></a>
+                                            <c:if test="${c.parent==0}">
+                                                Không có
+                                            </c:if>
+                                            <c:if test="${c.parent!=0}">
+                                                <%=qly_category.getCategoryByID(16).getName()%>
+                                            </c:if>
+                                        </td>
+                                        <td>
+                                            <a href="${pageContext.request.contextPath}/backend/cat?action=edit&id=${c.id}"><i
+                                                    class="far fa-edit"></i></a>
+                                            <a onclick="return confirm('are you sure?');"
+                                               href="${pageContext.request.contextPath}/backend/cat?action=delete&id=${c.id}"><i
+                                                    class="far fa-trash-alt"></i></a>
                                         </td>
                                     </tr>
                                 </c:forEach>

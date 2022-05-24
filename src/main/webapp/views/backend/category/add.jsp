@@ -46,9 +46,9 @@
                         <div class="form-group">
                             <label>Category parent</label>
                             <select class="form-control select2" style="width: 100%;" name="parent">
-                                <option selected="selected" value="0">choise parent</option>
+                                <option value="0">choise parent</option>
                                 <c:forEach items="${categories}" var="c">
-                                <option>${c.name}</option>
+                                <option value="${c.id}">${c.name}</option>
                                 </c:forEach>
                             </select>
                         </div>

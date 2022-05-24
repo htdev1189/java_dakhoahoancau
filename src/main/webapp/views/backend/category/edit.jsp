@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>List Category</title>
+    <title>Edit Category</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -33,7 +33,7 @@
         <div class="container-fluid">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Insert Category</h3>
+                    <h3 class="card-title">Edit Category</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
@@ -41,14 +41,14 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label>Category name</label>
-                            <input type="text" class="form-control" placeholder="enter name" name="name">
+                            <input type="text" class="form-control" placeholder="enter name" name="name" value="${category_current.name}">
                         </div>
                         <div class="form-group">
                             <label>Category parent</label>
                             <select class="form-control select2" style="width: 100%;" name="parent">
-                                <option value="0">choise parent</option>
+                                <option value="0" <c:if test="${category_current.parent == 0}">selected="selected"</c:if>>choise parent</option>
                                 <c:forEach items="${categories}" var="c">
-                                <option value="${c.id}">${c.name}</option>
+                                    <option value="${c.id}" <c:if test="${category_current.parent == c.id}">selected="selected"</c:if>>${c.name}</option>
                                 </c:forEach>
                             </select>
                         </div>
@@ -56,7 +56,7 @@
                     <!-- /.card-body -->
 
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Update</button>
                     </div>
                 </form>
             </div>

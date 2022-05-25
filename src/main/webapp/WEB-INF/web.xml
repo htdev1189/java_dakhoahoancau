@@ -3,6 +3,17 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+
+    <filter>
+        <filter-name>loggerFillter</filter-name>
+        <filter-class>htdev.fillter.LoggerFillter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>loggerFillter</filter-name>
+        <url-pattern>/backend/*</url-pattern>
+    </filter-mapping>
+
+
     <context-param>
         <param-name>javax.faces.CONFIG_FILES</param-name>
         <param-value>/WEB-INF/decorators.xml</param-value>
@@ -30,5 +41,6 @@
         <param-name>SDT</param-name>
         <param-value>0123456789</param-value>
     </context-param>
+
 
 </web-app>

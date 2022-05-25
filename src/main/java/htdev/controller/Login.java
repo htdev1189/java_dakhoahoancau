@@ -35,8 +35,12 @@ public class Login extends HttpServlet {
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
             requestDispatcher.forward(request,response);
         }else{
+            //thiet lap session
+            HttpSession httpSession = request.getSession();
+            httpSession.setAttribute("id",modelUser.getId());
+            httpSession.setAttribute("session_user",modelUser);
             System.out.println("ok");
-            response.sendRedirect("backend");
+            response.sendRedirect("http://localhost:8080/demo/backend/cat?action=list");
         }
     }
 }

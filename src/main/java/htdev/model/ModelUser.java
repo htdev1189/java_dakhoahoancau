@@ -7,22 +7,25 @@ public class ModelUser {
     private String country;
     private String pass;
     private String user;
+    private String image;
 
-    public ModelUser(int id, String name, String email, String country, String pass, String user) {
+    public ModelUser(int id, String name, String email, String country, String pass, String user, String image) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.country = country;
         this.pass = pass;
         this.user = user;
+        this.image = image;
     }
 
-    public ModelUser(String name, String email, String country, String pass, String user) {
+    public ModelUser(String name, String email, String country, String pass, String user, String image) {
         this.name = name;
         this.email = email;
         this.country = country;
         this.pass = pass;
         this.user = user;
+        this.image = image;
     }
 
     public int getId() {
@@ -43,6 +46,14 @@ public class ModelUser {
 
     public String getEmail() {
         return email;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public void setEmail(String email) {

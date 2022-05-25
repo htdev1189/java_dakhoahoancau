@@ -21,6 +21,15 @@ public class AdminUser extends HttpServlet {
     private UserDao qly_user;
     private static String action;
     private static ModelUser modelUser;
+    private static String name;
+    private static String email;
+    private static String country;
+    private static String pass;
+    private static String user;
+    private static String image;
+    private static int id;
+    private static String msg;
+
 
     @Override
     public void init(ServletConfig config) throws ServletException {
@@ -36,6 +45,12 @@ public class AdminUser extends HttpServlet {
             case "list":
                 request.getRequestDispatcher("/views/backend/user/list.jsp").forward(request, response);
                 break;
+            case "edit":
+                id = Integer.valueOf(request.getParameter("id"));
+                modelUser = qly_user.getUserByID(id);
+                request.setAttribute("current_user", modelUser);
+                request.getRequestDispatcher("/views/backend/user/edit.jsp").forward(request, response);
+                break;
             case "add":
                 request.getRequestDispatcher("/views/backend/user/add.jsp").forward(request, response);
                 break;
@@ -50,11 +65,11 @@ public class AdminUser extends HttpServlet {
         action = request.getParameter("action");
         switch (action) {
             case "add":
-                String name = request.getParameter("name");
-                String email = request.getParameter("email");
-                String user = request.getParameter("user");
-                String pass = request.getParameter("pass");
-                String country = request.getParameter("country");
+                name = request.getParameter("name");
+                email = request.getParameter("email");
+                user = request.getParameter("user");
+                pass = request.getParameter("pass");
+                country = request.getParameter("country");
 
                 Part part = request.getPart("image");
                 String realPath = "D:\\JAVA_EXAMPLE\\demo\\src\\main\\webapp\\upload\\";
@@ -63,8 +78,23 @@ public class AdminUser extends HttpServlet {
                     Files.createDirectories(Paths.get(realPath));
                 }
                 part.write(realPath + "/" + filename);
-                modelUser = new ModelUser(name,email,country,pass,user,filename);
-                if (qly_user.add(modelUser)){
+                modelUser = new ModelUser(name, email, country, pass, user, filename);
+                if (qly_user.add(modelUser)) {
+                    response.sendRedirect("http://localhost:8080/demo/backend/user?action=list");
+                }
+                break;
+            case "edit":
+                id = Integer.valueOf(request.getParameter("id"));
+                name = request.getParameter("name");
+                email = request.getParameter("email");
+                country = request.getParameter("country");
+                pass = request.getParameter("pass");
+                user = request.getParameter("user");
+                image = request.getParameter("image");
+                modelUser = new ModelUser(id,name,email,country,pass,user,image);
+                if (qly_user.updateUser(modelUser)){
+                    msg = "update success";
+                    request.setAttribute("msg",msg);
                     response.sendRedirect("http://localhost:8080/demo/backend/user?action=list");
                 }
                 break;

@@ -6,20 +6,42 @@ public class ModelPost {
     private String slug;
     private int category;
     private String content;
+    private String image;
+    private String des;
 
-    public ModelPost(int id, String name, String slug, int category, String content) {
+    public ModelPost(int id, String name, String slug, int category, String content,String image, String des) {
         this.id = id;
         this.name = name;
         this.slug = slug;
         this.category = category;
         this.content = content;
+        this.image = image;
+        this.des = des;
     }
 
-    public ModelPost(String name, String slug, int category, String content) {
+    public ModelPost(String name, String slug, int category, String content,String image, String des) {
         this.name = name;
         this.slug = slug;
         this.category = category;
         this.content = content;
+        this.image = image;
+        this.des = des;
+    }
+
+    public String getDes() {
+        return des;
+    }
+
+    public void setDes(String des) {
+        this.des = des;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public int getId() {

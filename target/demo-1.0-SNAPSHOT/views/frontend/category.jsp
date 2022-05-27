@@ -12,10 +12,10 @@
 <body>
 <div class="container mt-4 mb-4">
     <div class="row">
-        <div class="col-4">
+        <div class="col-3">
             <%@ include file="/common/frontend/cat-left.jsp" %>
         </div>
-        <div class="col-8">
+        <div class="col-9">
             <%@ include file="/common/frontend/cat-right.jsp" %>
         </div>
     </div>

@@ -19,16 +19,19 @@ import java.util.List;
 @WebServlet("/backend/user")
 public class AdminUser extends HttpServlet {
     private UserDao qly_user;
-    private static String action;
-    private static ModelUser modelUser;
-    private static String name;
-    private static String email;
-    private static String country;
-    private static String pass;
-    private static String user;
-    private static String image;
-    private static int id;
-    private static String msg;
+    private String action;
+    private ModelUser modelUser;
+    private String name;
+    private String email;
+    private String country;
+    private String pass;
+    private String user;
+    private String image;
+    private int id;
+    private String msg;
+    private Part part;
+    private String realPath;
+    private String filename;
 
 
     @Override
@@ -54,6 +57,12 @@ public class AdminUser extends HttpServlet {
             case "add":
                 request.getRequestDispatcher("/views/backend/user/add.jsp").forward(request, response);
                 break;
+            case "delete":
+                id = Integer.valueOf(request.getParameter("id"));
+                if (qly_user.delete(id)){
+                    response.sendRedirect("/demo/backend/user?action=list");
+                }
+                break;
             default:
                 break;
         }
@@ -70,14 +79,16 @@ public class AdminUser extends HttpServlet {
                 user = request.getParameter("user");
                 pass = request.getParameter("pass");
                 country = request.getParameter("country");
-
-                Part part = request.getPart("image");
-                String realPath = "D:\\JAVA_EXAMPLE\\demo\\src\\main\\webapp\\upload\\";
-                String filename = Paths.get(part.getSubmittedFileName()).getFileName().toString();
+                part = request.getPart("image");
+                realPath = "D:\\JAVA_EXAMPLE\\demo\\src\\main\\webapp\\upload\\avatar\\";
+                filename = Paths.get(part.getSubmittedFileName()).getFileName().toString();
                 if (!Files.exists(Paths.get(realPath))) {
                     Files.createDirectories(Paths.get(realPath));
                 }
-                part.write(realPath + "/" + filename);
+                //check file exists
+                if (!Files.exists(Paths.get(realPath+"/"+filename))) {
+                    part.write(realPath + "/" + filename);
+                }
                 modelUser = new ModelUser(name, email, country, pass, user, filename);
                 if (qly_user.add(modelUser)) {
                     response.sendRedirect("http://localhost:8080/demo/backend/user?action=list");
@@ -90,8 +101,18 @@ public class AdminUser extends HttpServlet {
                 country = request.getParameter("country");
                 pass = request.getParameter("pass");
                 user = request.getParameter("user");
-                image = request.getParameter("image");
-                modelUser = new ModelUser(id,name,email,country,pass,user,image);
+
+                part = request.getPart("image");
+                realPath = "D:\\JAVA_EXAMPLE\\demo\\src\\main\\webapp\\upload\\avatar\\";
+                filename = Paths.get(part.getSubmittedFileName()).getFileName().toString();
+                if (!Files.exists(Paths.get(realPath))) {
+                    Files.createDirectories(Paths.get(realPath));
+                }
+                //check file exists
+                if (!Files.exists(Paths.get(realPath+"/"+filename))) {
+                    part.write(realPath + "/" + filename);
+                }
+                modelUser = new ModelUser(id,name,email,country,pass,user,filename);
                 if (qly_user.updateUser(modelUser)){
                     msg = "update success";
                     request.setAttribute("msg",msg);

@@ -11,7 +11,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/post/*")
+@WebServlet("/baiviet/*")
 public class Post extends HttpServlet {
     private CategoryDao qly_categories;
     private PostDao qly_post;

@@ -11,7 +11,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDao extends Connect {
+    private Connection connection;
+    private PreparedStatement preparedStatement;
+    private boolean kq;
+    private String sql;
+    public UserDao() {
+        super();
+        connection = getConnection();
+    }
 
+    public boolean delete(int idUser){
+        kq = false;
+        sql = "delete from users where id = ?";
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1,idUser);
+            if (preparedStatement.executeUpdate()>0){
+                kq = true;
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return kq;
+    }
     //update
     public boolean updateUser(ModelUser modelUser) {
         boolean kq = false;

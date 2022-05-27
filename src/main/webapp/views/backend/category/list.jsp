@@ -70,10 +70,11 @@
                                         <td>${c.slug}</td>
                                         <td>
                                             <c:if test="${c.parent==0}">
-                                                Không có
+                                                None
                                             </c:if>
                                             <c:if test="${c.parent!=0}">
-                                                <%=qly_category.getCategoryByID(16).getName()%>
+                                                <jsp:useBean id="test" class="htdev.dao.CategoryDao"/>
+                                                ${test.getCategoryByID(c.parent).name}
                                             </c:if>
                                         </td>
                                         <td>

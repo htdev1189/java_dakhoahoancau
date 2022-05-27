@@ -64,7 +64,7 @@
                                     <tr>
                                         <td>${c.id}</td>
                                         <td>
-                                            <img src="<c:url value='/upload/${c.image}'/>" class="img-fluid" style="width: 115px;height: 115px;">
+                                            <img src="<c:url value='/upload/avatar/${c.image}'/>" class="img-fluid" style="width: 115px;height: 115px;">
                                         </td>
                                         <td>${c.name}</td>
                                         <td>

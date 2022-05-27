@@ -39,8 +39,7 @@ public class Login extends HttpServlet {
             HttpSession httpSession = request.getSession();
             httpSession.setAttribute("id",modelUser.getId());
             httpSession.setAttribute("session_user",modelUser);
-            System.out.println("ok");
-            response.sendRedirect("http://localhost:8080/demo/backend/cat?action=list");
+            response.sendRedirect("http://localhost:8080/demo/backend/post?action=add");
         }
     }
 }

@@ -70,10 +70,17 @@
                             <label for="exampleInputFile">File input</label>
                             <div class="input-group">
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="exampleInputFile" name="image"
-                                           value="${current_user.image}">
-                                    <label class="custom-file-label" for="exampleInputFile"><c:if test="${current_user.image==''}"><c:out value="${current_user.image}"></c:out></c:if></label>
+                                    <input type="file" class="custom-file-input" id="exampleInputFile" name="image">
+                                    <label class="custom-file-label"
+                                           for="exampleInputFile">${current_user.image}</label>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Thumbnails</label>
+                            <div>
+                                <img style="width: 200px;height: 200px;" class="img-thumbnail"
+                                     src="<c:url value="/upload/avatar/${current_user.image}"></c:url>">
                             </div>
                         </div>
                     </div>

@@ -17,7 +17,7 @@ public class LoggerFillter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException, IOException {
-        System.out.println("Filter start");
+//        System.out.println("Filter start");
         //khai bao http request
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         HttpServletResponse httpServletResponse = (HttpServletResponse) response;

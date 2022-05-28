@@ -115,11 +115,13 @@
 <!-- Page specific script -->
 <%--ckeditor--%>
 <script src="<c:url value='/assets/ckeditor/ckeditor.js'/>"></script>
+<script src="<c:url value='/assets/ckfinder/ckfinder.js'/>"></script>
 <script>
     $(function () {
         $('.select2').select2();
         bsCustomFileInput.init();
         editor = CKEDITOR.replace("content");
+        CKFinder.setupCKEditor(editor,"<%=request.getContextPath()%>/assets/ckfinder/");
         editor2 = CKEDITOR.replace("des");
     });
 </script>

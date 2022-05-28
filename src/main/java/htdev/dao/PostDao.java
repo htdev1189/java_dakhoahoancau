@@ -72,7 +72,7 @@ public class PostDao extends Connect{
             preparedStatement.setInt(3,modelPost.getCategory());
             preparedStatement.setString(4,modelPost.getContent());
             preparedStatement.setString(5,modelPost.getImage());
-            preparedStatement.setString(5,modelPost.getDes());
+            preparedStatement.setString(6,modelPost.getDes());
             if (preparedStatement.executeUpdate()>0){
                 kq = true;
             }

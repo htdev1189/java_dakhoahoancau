@@ -4,14 +4,24 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
-    <filter>
-        <filter-name>loggerFillter</filter-name>
-        <filter-class>htdev.fillter.LoggerFillter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>loggerFillter</filter-name>
-        <url-pattern>/backend/*</url-pattern>
-    </filter-mapping>
+<!--error page-->
+<!--    <error-page>-->
+<!--        <error-code>404</error-code>-->
+<!--        <location>/Error</location>-->
+<!--    </error-page>-->
+<!--    <error-page>-->
+<!--        <error-code>500</error-code>-->
+<!--        <location>/Error</location>-->
+<!--    </error-page>-->
+
+<!--    <filter>-->
+<!--        <filter-name>loggerFillter</filter-name>-->
+<!--        <filter-class>htdev.fillter.LoggerFillter</filter-class>-->
+<!--    </filter>-->
+<!--    <filter-mapping>-->
+<!--        <filter-name>loggerFillter</filter-name>-->
+<!--        <url-pattern>/backend/*</url-pattern>-->
+<!--    </filter-mapping>-->
 
 
     <context-param>

@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <decorators defaultdir="/decorators">
     <excludes>
+        <pattern>/Error</pattern>
         <pattern>/login*</pattern>
         <pattern>/API*</pattern>
         <pattern>/assets*</pattern>
